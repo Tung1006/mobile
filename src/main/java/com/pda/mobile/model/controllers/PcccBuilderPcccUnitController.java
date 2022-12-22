@@ -40,12 +40,11 @@ public class PcccBuilderPcccUnitController {
 		return res;
 	}
 
-	@PostMapping("/save")
+	@PostMapping("/add")
 	public ResponseBean save(@Valid @RequestBody PcccBuilderPcccUnit obj ) {
 		ResponseBean res = new ResponseBean();
 		try 
 		{
-			
 			res.setData(service.save(obj));
 		} catch (Exception e) {
 			// TODO: handle exception
@@ -56,7 +55,7 @@ public class PcccBuilderPcccUnitController {
 		return res;
 	}
 
-	@PostMapping("/update")
+	@PutMapping("/update")
 	public ResponseBean update(@RequestBody PcccBuilderPcccUnit obj) {
 		ResponseBean res = new ResponseBean();
 		try {

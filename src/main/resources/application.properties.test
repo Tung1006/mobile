@@ -1,6 +1,6 @@
 spring.datasource.url=jdbc:oracle:thin:@222.252.17.169:11521/orcl
-spring.datasource.username=pccc_dev_docker3
-spring.datasource.password=Asdf1234
+spring.datasource.username=testattt
+spring.datasource.password=testattt
 
 # create n drop tables, loads import.sql.bak
 #spring.jpa.hibernate.ddl-auto=create-drop

@@ -3,19 +3,18 @@ package com.pda.mobile.model.services;
 import java.sql.Date;
 import java.util.List;
 
-import com.pda.mobile.model.entities.PcccBuilderPcccUnit;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
 import com.pda.mobile.model.entities.PcccBuilderVerhicle;
-import com.pda.mobile.model.reporitories.PcccVerhicleRepository;
+import com.pda.mobile.model.reporitories.PcccBuilderVerhicleRepository;
 import org.springframework.web.server.ResponseStatusException;
 
 @Service
-public class PcccVerhicleService {
+public class PcccBuilderVerhicleService {
 	@Autowired
-	public PcccVerhicleRepository repository;
+	public PcccBuilderVerhicleRepository repository;
 
 	public List<PcccBuilderVerhicle> getByBuilderId(long builderId) {
 

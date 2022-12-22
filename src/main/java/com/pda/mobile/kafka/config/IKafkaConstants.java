@@ -1,8 +1,8 @@
 package com.pda.mobile.kafka.config;
 
 public interface IKafkaConstants {
-    //public static String KAFKA_BROKERS = "192.168.1.225:9093";
-	public static String KAFKA_BROKERS = "10.0.1.32:9093";
+    public static String KAFKA_BROKERS = "192.168.1.225:9093";
+//	public static String KAFKA_BROKERS = "10.0.1.32:9093";
   
     public static Integer MESSAGE_COUNT=1000;
 

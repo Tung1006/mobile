@@ -1,9 +1,9 @@
 package com.pda.mobile.beans;
 
 
-import com.pda.mobile.model.entities.PcccBuilderPcccUnit;
-import com.pda.mobile.model.entities.PcccBuilderVerhicle;
-import com.pda.mobile.model.entities.PcccInfringeHandle;
+import com.pda.mobile.model.entities.*;
+import com.pda.mobile.model.entities.dto.builderDto;
+import com.pda.mobile.model.entities.dto.deviceDto;
 
 public class ResponseBeanDelete {
 
@@ -47,5 +47,23 @@ public class ResponseBeanDelete {
 
     public void setData(PcccInfringeHandle delete) {
     }
+
+    public void setData(PcccSensor delete) {
+    }
+
+    public void setData(deviceDto delete) {
+    }
+
+    public void setData(PcccApprove delete) {
+    }
+
+    public void setData(builderDto delete) {
+    }
+
+
+
+
+
+
 
 }

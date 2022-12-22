@@ -1,7 +1,9 @@
 package com.pda.mobile.model.services;
 
+import java.sql.Date;
 import java.util.List;
 
+import com.pda.mobile.model.entities.PcccBuilderVerhicle;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
@@ -23,8 +25,11 @@ public class PcccBuilderPcccUnitService {
 
 	public PcccBuilderPcccUnit save(PcccBuilderPcccUnit obj) {
 
+		obj.setCreateDate(new Date(System.currentTimeMillis()));
 		return repository.save(obj);
 	}
+
+
 
 	public PcccBuilderPcccUnit update(PcccBuilderPcccUnit obj) throws Exception {
 		if (repository.findById(obj.getBuilderPcccUnitId()).isEmpty()) {

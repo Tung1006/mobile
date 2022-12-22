@@ -12,7 +12,7 @@ import com.pda.mobile.model.entities.PcccBuilderVerhicle;
 
 @Repository
 @EnableJpaRepositories
-public interface PcccVerhicleRepository extends JpaRepository<PcccBuilderVerhicle, Long> 
+public interface PcccBuilderVerhicleRepository extends JpaRepository<PcccBuilderVerhicle, Long>
 {
 //	@Query(value = "SELECT *  FROM  PCCC_BUILDERVEHICLE,PCCC_BUILDER  where PCCC_BUILDER.BUILDERID = :builderId and PCCC_BUILDERVEHICLE.BUILDERID = PCCC_BUILDER.BUILDERID", nativeQuery = true)
 

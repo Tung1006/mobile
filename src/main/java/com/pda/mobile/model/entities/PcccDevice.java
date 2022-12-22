@@ -9,7 +9,6 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "PCCC_DEVICE")
-@SecondaryTable(name="pccc_appdomain", pkJoinColumns = @PrimaryKeyJoinColumn(name="APPDOMAINID"))
 public class PcccDevice {
 
 	@Id
@@ -132,12 +131,10 @@ public class PcccDevice {
 	@Column(name = "DISTRICTID")
 	private Long districtId;
 
-//	@Column(name = " Provincename")
-	@Transient
+	@Column(name = " Provincename")
 	private String provinceName;
 
-//	@Column(name = " DISTRICTNAME ")
-	@Transient
+	@Column(name = " DISTRICTNAME ")
 	private String districtName;
 
 	@Column(name = "SHOPNAME")
@@ -147,11 +144,15 @@ public class PcccDevice {
 	@Column(insertable = false, updatable = false)
 	private List<PcccSensor> pcccSensor;
 
-	@Column(name="name", table ="pccc_appdomain")
+
+	@Column(name="DEVICETYPENAME")
 	private String nameOfDeviceType;
+
 	public PcccDevice() {
 		// TODO Auto-generated constructor stub
 	}
+
+
 
 	public Long getDeviceId() {
 		return deviceId;
@@ -178,37 +179,19 @@ public class PcccDevice {
 		this.nameOfDeviceType = nameOfDeviceType;
 	}
 
-
 	public Long getUserId() {
 		return userId;
 	}
-
-
-
 	public void setUserId(Long userId) {
 		this.userId = userId;
 	}
-
-
-
 	public String getUserName() {
 		return userName;
 	}
 
-
-
 	public void setUserName(String userName) {
 		this.userName = userName;
 	}
-
-
-
-
-
-
-
-
-
 
 	public Date getCreateDate() {
 		return createDate;

@@ -2,18 +2,19 @@ package com.pda.mobile.model.entities;
 
 import java.util.Date;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import org.hibernate.annotations.GenericGenerator;
 
 @Entity
 @Table(name = "PCCC_PCCCAPPROVE")
 public class PcccApprove {
 
+
 	@Id
+	@GeneratedValue(generator = "PCCCAPPROVE_SEQ")
+	@GenericGenerator(name = "PCCCAPPROVE_SEQ", strategy = "org.hibernate.id.enhanced.SequenceStyleGenerator")
 	@Column(name = "PCCCAPPROVEID")
 	private Long pcccApproveId;
 
@@ -25,6 +26,14 @@ public class PcccApprove {
 
 	@Column(name = "DOCNAME")
 	private String docName;
+
+	@JsonFormat(pattern = "dd/MM/yyyy", shape = JsonFormat.Shape.STRING, timezone = "Asia/Bangkok")
+	@Column(name = "CREATEDATE")
+	private Date createDate;
+
+	@JsonFormat(pattern = "dd/MM/yyyy", shape = JsonFormat.Shape.STRING, timezone = "Asia/Bangkok")
+	@Column(name = "MODIFIEDDATE")
+	private Date modifiedDate;
 
 	@Column(name ="DOCUMENTCODE")
 	private String documentCode;
@@ -61,6 +70,22 @@ public class PcccApprove {
 
 	public PcccApprove() {
 		// TODO Auto-generated constructor stub
+	}
+
+	public Date getCreateDate() {
+		return createDate;
+	}
+
+	public void setCreateDate(Date createDate) {
+		this.createDate = createDate;
+	}
+
+	public Date getModifiedDate() {
+		return modifiedDate;
+	}
+
+	public void setModifiedDate(Date modifiedDate) {
+		this.modifiedDate = modifiedDate;
 	}
 
 	public Boolean getActive_() {

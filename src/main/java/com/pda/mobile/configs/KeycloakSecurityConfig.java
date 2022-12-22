@@ -54,7 +54,7 @@ public class KeycloakSecurityConfig extends KeycloakWebSecurityConfigurerAdapter
 	 * If you don't want to use the keycloak.json file, then uncomment this bean.
 	 */
 	/**
-	 * Use properties in application.properties instead of keycloak.json
+	 * Use properties in application.properties.test instead of keycloak.json
 	 */
 	@Bean
 	@Primary

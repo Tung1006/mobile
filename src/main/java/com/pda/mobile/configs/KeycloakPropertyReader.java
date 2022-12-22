@@ -12,7 +12,7 @@ import org.springframework.core.env.Environment;
  * @since
  */
 @Configuration
-@PropertySource("classpath:application.properties")
+@PropertySource("classpath:application.properties.test")
 public class KeycloakPropertyReader {
 
 	@Autowired

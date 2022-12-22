@@ -2,18 +2,18 @@ package com.pda.mobile.model.entities;
 
 import java.util.Date;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import org.hibernate.annotations.GenericGenerator;
 
 @Entity
 @Table(name = "PCCC_INFRINGEHANDLE")
 public class PcccInfringeHandle {
 
 	@Id
+	@GeneratedValue(generator = "INFRINGEHANDLE_SEQ")
+	@GenericGenerator(name = "INFRINGEHANDLE_SEQ", strategy = "org.hibernate.id.enhanced.SequenceStyleGenerator")
 	@Column(name = "INFRINGEHANDLEID")
 	private Long infringeHandleId;
 
@@ -22,17 +22,6 @@ public class PcccInfringeHandle {
 
 	@Column(name="USERID")
 	private Long userId ;
-
-	@Column(name="USERNAME")
-	private String userName;
-
-	@JsonFormat(pattern = "dd/MM/yyyy", timezone = "Asia/Bangkok")
-	@Column(name = "INFRINGEDATE")
-	private Date infringeDate;
-
-	@JsonFormat(pattern = "dd/MM/yyyy HH:mm:ss", shape = JsonFormat.Shape.STRING, timezone = "Asia/Bangkok")
-	@Column(name = "CREATEDATE")
-	private Date createDate;
 
 	@Column(name="INFRINGEGROUPID")
 	private Long infringeGroupId ;
@@ -49,8 +38,62 @@ public class PcccInfringeHandle {
 	@Column(name="COMMUNEID")
 	private Long communeId ;
 
+	@Column(name="USERNAME")
+	private String userName;
+
+	@JsonFormat(pattern = "dd/MM/yyyy", timezone = "Asia/Bangkok")
+	@Column(name = "INFRINGEDATE")
+	private Date infringeDate;
+
+	@JsonFormat(pattern = "dd/MM/yyyy HH:mm:ss", shape = JsonFormat.Shape.STRING, timezone = "Asia/Bangkok")
+	@Column(name = "CREATEDATE")
+	private Date createDate;
+
 	@Column(name="BUILDERNAME")
 	private String builderName;
+
+
+	@JsonFormat(pattern = "dd/MM/yyyy HH:mm:ss", shape = JsonFormat.Shape.STRING, timezone = "Asia/Bangkok")
+	@Column(name="MODIFIEDDATE")
+	private Date modifiedDate;
+
+	@Column(name = "INFRINGEAMOUNT")
+	private Double infringeAmount;
+
+	@Column(name = "INFRINGECONTENT")
+	private String infringeContent;
+
+	@Column(name ="ACTIVE_")
+	private Boolean active_ = true;
+
+	@Column(name= "ISWARNING")
+	private Integer isWarning;
+
+	@Column(name ="ISSUSPENDED")
+	private Integer isSuspended;
+
+	@Column(name ="ISTEMPSUSPENDED")
+	private Integer isTempSuspended;
+
+	@JsonFormat(pattern = "dd/MM/yyyy HH:mm:ss", shape = JsonFormat.Shape.STRING, timezone = "Asia/Bangkok")
+	@Column(name ="TEMPSUSPENDEDDATE")
+	private String tempSuspendedDate;
+
+	@Column(name="DOCCODE")
+	private String docCode;
+	@Column(name="OTHERCONTENT")
+	private String otherContent;
+
+	@JsonFormat(pattern = "dd/MM/yyyy HH:mm:ss", shape = JsonFormat.Shape.STRING, timezone = "Asia/Bangkok")
+	@Column(name="TEMPSUSPENDEDREACTIVEDATE")
+	private Date tempSuspendedReactiveDate;
+	@Column(name="CHECKEDID")
+	private Long checkId;
+	@Column(name="RESCUEDEPARTMENTNAME")
+	private String rescueDepartmentName;
+
+	@Column(name = " INFRINGEOBJECT")
+	private String infringeObject;
 
 	public Long getRescueDepartmentId() {
 		return rescueDepartmentId;
@@ -92,11 +135,6 @@ public class PcccInfringeHandle {
 		this.builderName = builderName;
 	}
 
-
-	@JsonFormat(pattern = "dd/MM/yyyy HH:mm:ss", shape = JsonFormat.Shape.STRING, timezone = "Asia/Bangkok")
-	@Column(name="MODIFIEDDATE")
-	private Date modifiedDate;
-
 	public Date getModifiedDate() {
 		return modifiedDate;
 	}
@@ -113,41 +151,6 @@ public class PcccInfringeHandle {
 	public Date getCreateDate() {
 		return createDate;
 	}
-
-	@Column(name = "INFRINGEAMOUNT")
-	private Double infringeAmount;
-
-	@Column(name = "INFRINGECONTENT")
-	private String infringeContent;
-	
-	@Column(name ="ACTIVE_")
-	private Boolean active_ = true;
-	
-	@Column(name= "ISWARNING")
-	private Integer isWarning;
-	
-	@Column(name ="ISSUSPENDED")
-	private Integer isSuspended;
-	
-	@Column(name ="ISTEMPSUSPENDED")
-	private Integer isTempSuspended;
-
-	@JsonFormat(pattern = "dd/MM/yyyy HH:mm:ss", shape = JsonFormat.Shape.STRING, timezone = "Asia/Bangkok")
-	@Column(name ="TEMPSUSPENDEDDATE")
-	private String tempSuspendedDate;
-	
-	@Column(name="DOCCODE")
-	private String docCode;
-	@Column(name="OTHERCONTENT")
-	private String otherContent;
-
-	@JsonFormat(pattern = "dd/MM/yyyy HH:mm:ss", shape = JsonFormat.Shape.STRING, timezone = "Asia/Bangkok")
-	@Column(name="TEMPSUSPENDEDREACTIVEDATE")
-	private Date tempSuspendedReactiveDate;
-	@Column(name="CHECKEDID")
-	private Long checkId;
-	@Column(name="RESCUEDEPARTMENTNAME")
-	private String rescueDepartmentName;
 	
 	public PcccInfringeHandle() {
 		// TODO Auto-generated constructor stub
@@ -169,13 +172,12 @@ public class PcccInfringeHandle {
 		this.userName = userName;
 	}
 
-	@Column(name = " INFRINGEOBJECT")
-	private String infringeObject;
 
 
 
-//	@Column(name = " URLFILE")
-//	private String urlFile;
+
+//	@Column(name = " FILEURL")
+//	private String fileUrl;
 
 	public String getInfringeObject() {
 		return infringeObject;
@@ -185,12 +187,20 @@ public class PcccInfringeHandle {
 		this.infringeObject = infringeObject;
 	}
 
-//	public String getUrlFile() {
-//		return urlFile;
+	public Long getInfringeGroupId() {
+		return infringeGroupId;
+	}
+
+	public void setInfringeGroupId(Long infringeGroupId) {
+		this.infringeGroupId = infringeGroupId;
+	}
+
+//	public String getFileUrl() {
+//		return fileUrl;
 //	}
 //
-//	public void setUrlFile(String urlFile) {
-//		this.urlFile = urlFile;
+//	public void setFileUrl(String fileUrl) {
+//		this.fileUrl = fileUrl;
 //	}
 
 	public Long getInfringeHandleId() {

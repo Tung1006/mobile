@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 
 import com.pda.mobile.beans.ResponseBean;
 import com.pda.mobile.model.entities.PcccBuilderVerhicle;
-import com.pda.mobile.model.services.PcccVerhicleService;
+import com.pda.mobile.model.services.PcccBuilderVerhicleService;
 
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 
@@ -17,7 +17,7 @@ import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 @SecurityRequirement(name = "bearerAuth")
 public class PcccBuilderVerhicleController {
 	@Autowired
-	public PcccVerhicleService service;
+	public PcccBuilderVerhicleService service;
 
 	@RequestMapping(value = "", method = RequestMethod.GET)
 	public ResponseBean getPaging(

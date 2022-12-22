@@ -3,6 +3,8 @@ package com.pda.mobile.model.services;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.pda.mobile.model.entities.dto.builderDto;
+import com.pda.mobile.model.reporitories.*;
 import org.jboss.logging.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
@@ -10,10 +12,6 @@ import org.springframework.stereotype.Service;
 
 import com.pda.mobile.model.entities.PcccBuilder;
 import com.pda.mobile.model.entities.PcccDevice;
-import com.pda.mobile.model.reporitories.PcccBuilderRepository;
-import com.pda.mobile.model.reporitories.PcccDeviceRepository;
-import com.pda.mobile.model.reporitories.PcccInfringeHandleRepository;
-import com.pda.mobile.model.reporitories.PcccSensorRepository;
 import com.pda.mobile.response.data.BuildingInfor;
 import com.pda.mobile.response.data.BuildingOwnerInfor;
 import com.pda.mobile.response.data.CenterDeviceInfor;
@@ -23,6 +21,9 @@ public class PcccSummaryService {
 
 	@Autowired
 	public PcccBuilderRepository pcccBuilderRepository;
+
+	@Autowired
+	public BuilderRepository builderRepository;
 	@Autowired
 	public PcccDeviceRepository pcccDeviceRepository;
 	@Autowired	
@@ -44,7 +45,7 @@ public class PcccSummaryService {
 	{
 		
 		ArrayList<BuildingInfor> buildingInfor = new ArrayList<BuildingInfor>();
-		List<PcccBuilder> lPcccBuilder = pcccBuilderRepository.getBuilderByUserId(userId);
+		List<builderDto> lPcccBuilder = builderRepository.getBuilderByUserId(userId);
 		if (lPcccBuilder.size() > 0)
 		{
 			for (int i =0; i < lPcccBuilder.size();i++)

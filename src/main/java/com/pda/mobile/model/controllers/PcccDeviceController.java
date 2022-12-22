@@ -1,15 +1,18 @@
 package com.pda.mobile.model.controllers;
 
+import com.pda.mobile.beans.ResponseBeanDelete;
+import com.pda.mobile.model.entities.PcccSensor;
+import com.pda.mobile.model.entities.dto.deviceDto;
+import org.jboss.logging.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import com.pda.mobile.beans.ResponseBean;
 import com.pda.mobile.model.services.PcccDeviceService;
 
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
+
+import javax.validation.Valid;
 
 @RestController
 @RequestMapping("/api/device")
@@ -17,6 +20,8 @@ import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 public class PcccDeviceController {
 	@Autowired
 	public PcccDeviceService service;
+
+	private static final Logger log = Logger.getLogger(PcccDeviceController.class.getName());
 
 	@RequestMapping(value = "", method = RequestMethod.GET)
 	public ResponseBean getPaging(
@@ -46,6 +51,53 @@ public class PcccDeviceController {
 		{
 			res.setStatus(500);
 			res.setMessage(e.getMessage());			
+		}
+		return res;
+	}
+
+	@RequestMapping(value = "/add", method = RequestMethod.POST)
+	public ResponseBean addDevice(@Valid @RequestBody deviceDto obj)
+	{
+		ResponseBean res = new ResponseBean();
+		try
+		{
+			res.setData(service.save(obj));
+		}
+		catch (Exception e)
+		{
+			log.error(e);
+			res.setStatus(500);
+			res.setMessage(e.getMessage());
+		}
+		return res;
+	}
+	@RequestMapping(value = "/update", method = RequestMethod.PUT)
+	public ResponseBean updateDevice(@Valid @RequestBody deviceDto obj)
+	{
+		ResponseBean res = new ResponseBean();
+		try
+		{
+			res.setData(service.update(obj));
+		}
+		catch (Exception e)
+		{
+			log.error(e);
+			res.setStatus(500);
+			res.setMessage(e.getMessage());
+		}
+		return res;
+	}
+
+	@DeleteMapping("/delete/{id}")
+	public ResponseBeanDelete delete(@PathVariable(value = "id") Long id) {
+		ResponseBeanDelete res = new ResponseBeanDelete();
+		try {
+			res.setData(service.delete(id));
+
+		} catch (Exception e) {
+			// TODO: handle exception
+			res.setStatus(500);
+			res.setMessage(e.getMessage());
 		}
 		return res;
 	}
